@@ -1,5 +1,5 @@
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import streamlit as st
 import openai
 
@@ -18,10 +18,10 @@ class Recipe(BaseModel):
     ingredients: list[str] = Field(description="A list of ingredients with precise measurements required for the recipe.")
     instructions: dict[int, str] = Field(description="Numbered step-by-step instructions to prepare the dish.")
     
-load_dotenv()
+#load_dotenv()
 
 OPENAI_MODEL = "gpt-4"
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 PROMPT = """
 I want you to act as a recipe database. I will provide you with a list of ingredients, and you will generate a recipe out of those ingredients. Be very certain not to leave out any step in the instructions, and keep the recipe limited to the food items provided.
